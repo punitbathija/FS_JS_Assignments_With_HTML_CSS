@@ -16,48 +16,97 @@ let compResult = document.querySelector("#result-comp-stat");
 
 let finalResult = document.querySelector("#result-final-stat");
 
-let pChoice;
-let cChoice;
+// Initializing scores to update the DOM Elements dynamically
 
-// Letting the player choose from the options
+let playerScore = 0;
 
-function playerChoice() {
-  rock.addEventListener("click", function () {
-    console.log("player choose rock");
-    pChoice = "rock";
-  });
+let computerScore = 0;
 
-  paper.addEventListener("click", function () {
-    console.log("player choose paper");
-    pChoice = "paper";
-  });
+// Initilizing variables to store returned data and perform functions
 
-  scissor.addEventListener("click", function () {
-    console.log("player choose scissor");
-    playerChoice = "scissor";
-  });
-  return pChoice;
-}
+let playerChoice;
 
-playerChoice();
+let computerChoice;
 
-// Taking the random choice from the computer
+let choices = ["Rock", "Paper", "Scissor"];
 
-const getComputersChoice = () => {
-  let cChoice = Math.floor(Math.random() * 3);
-  switch (cChoice) {
-    case 0: {
-      return "stone";
+// A function to add value to playerChoice and computerChoice
+
+function playRound() {
+  if (playerChoice === "Rock") {
+    userResult.innerText = "User: Rock";
+  }
+  if (computerChoice === "Rock") {
+    compResult.innerText = "Computer: Rock";
+  }
+  if (playerChoice === "Paper") {
+    userResult.innerText = "User: Paper";
+  }
+  if (computerChoice === "Paper") {
+    compResult.innerText = "Computer: Paper";
+  }
+  if (playerChoice === "Scissor") {
+    userResult.innerText = "User: Scissor";
+  }
+  if (computerChoice === "Scissor") {
+    compResult.innerText = "Computer: Scissor";
+  }
+
+  decideWinner();
+
+  // A function to compare the results of both selection
+
+  function decideWinner() {
+    if (playerChoice === computerChoice) {
+      finalResult.innerText = "It's a tie...";
     }
 
-    case 1: {
-      return "paper";
+    if (
+      (computerChoice === "Rock" && playerChoice === "Paper") ||
+      (computerChoice === "Paper" && playerChoice === "Scissor") ||
+      (computerChoice === "Scissor" && playerChoice === "Rock")
+    ) {
+      playerScore++;
+      userScore.innerText = playerScore;
+      compScore.innerText = computerScore;
+      finalResult.innerText = "User Won!";
     }
-    case 2: {
-      return "scissor";
+
+    if (
+      (playerChoice === "Rock" && computerChoice === "Paper") ||
+      (playerChoice === "Paper" && computerChoice === "Scissor") ||
+      (playerChoice === "Scissor" && computerChoice === "Rock")
+    ) {
+      computerScore++;
+      userScore.innerText = playerScore;
+      compScore.innerText = computerScore;
+      finalResult.innerText = "Computer Won!";
     }
   }
-  return cChoice;
-};
+}
 
-getComputersChoice();
+// A function to get computer choice
+
+function getComputerChoice() {
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
+// Adding event listeners to get user input and compare it with computer input
+
+rock.addEventListener("click", function () {
+  playerChoice = "Rock";
+  computerChoice = getComputerChoice();
+  playRound();
+});
+
+paper.addEventListener("click", function () {
+  playerChoice = "Paper";
+  computerChoice = getComputerChoice();
+  playRound();
+});
+
+scissor.addEventListener("click", function () {
+  playerChoice = "Scissor";
+  computerChoice = getComputerChoice();
+  playRound();
+});
