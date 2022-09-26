@@ -17,11 +17,11 @@ async function getJoke(){
 
 // Function to refresh the joke
 
-async function handleClick(){
+async function populateJokeOnBtnClick(){
     const { joke } = await getJoke();
     jokeBody.textContent = joke;
 }
 
 // Adding event listener to the button
 
-jokeBtn.addEventListener("click", handleClick);
+jokeBtn.addEventListener("click", populateJokeOnBtnClick);
