@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 // Targeting all the elements needed for achieving the task
 
-=======
->>>>>>> 9db94f955d95afd10ae92832826db46db35c54bd
 const resultEl = document.getElementById("result");
 const lengthEl = document.getElementById("length");
 const uppercaseEl = document.getElementById("uppercase");
@@ -19,7 +16,6 @@ const randomFunc = {
   symbol: getRandomSymbol(),
 };
 
-<<<<<<< HEAD
 // Adding an eventlistener to copy the passowrd
 
 clipboardEl.addEventListener("click", () => {
@@ -39,17 +35,11 @@ generateEl.addEventListener("click", () => {
 });
 
 // Function to generate the password
-=======
-clipboardEl.addEventListener("click", () => {});
-
-generateEl.addEventListener("click", () => {});
->>>>>>> 9db94f955d95afd10ae92832826db46db35c54bd
 
 function generatePassword(lower, upper, number, symbol, length) {
   length = lengthEl.value;
   let array = [];
   for (let i = 0; i <= length; i++) {
-<<<<<<< HEAD
     if (lowercaseEl.checked) {
       lower = getRandomLower();
     }
@@ -72,22 +62,6 @@ function generatePassword(lower, upper, number, symbol, length) {
 
 // Function to get random lower case character
 
-=======
-      lower = getRandomLower();
-      upper = getRandomUpper();
-      number = getRandomNumber();
-      symbol = getRandomSymbol();
-      chars = [lower, upper, number, symbol];
-
-    var randomNumber = chars[Math.floor(Math.random() * chars.length)];
-    array.push(randomNumber);
-}
-    return array.join('');
-  
-}
-
-// Function to get random lower case character
->>>>>>> 9db94f955d95afd10ae92832826db46db35c54bd
 function getRandomLower() {
   let char = [
     "a",
@@ -122,10 +96,7 @@ function getRandomLower() {
 }
 
 // Function to get random upper case character
-<<<<<<< HEAD
 
-=======
->>>>>>> 9db94f955d95afd10ae92832826db46db35c54bd
 function getRandomUpper() {
   let char = [
     "a",
@@ -160,10 +131,7 @@ function getRandomUpper() {
 }
 
 // Function to get random number character
-<<<<<<< HEAD
 
-=======
->>>>>>> 9db94f955d95afd10ae92832826db46db35c54bd
 function getRandomNumber() {
   let char = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   let numberC = char[Math.floor(Math.random() * char.length)];
@@ -171,10 +139,7 @@ function getRandomNumber() {
 }
 
 // Function to get random symbol character
-<<<<<<< HEAD
 
-=======
->>>>>>> 9db94f955d95afd10ae92832826db46db35c54bd
 function getRandomSymbol() {
   let char = [
     "~",
